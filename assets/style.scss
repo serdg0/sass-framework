@@ -1,0 +1,18 @@
+//MAP
+$container-widths: ("small": 360px, "medium": 720px, "large": 1160px);
+$breakpoints: ("reset": 0, "small": 300px, "medium": 767px, "large": 991px);
+$columns: 12;
+$gutters: 2%;
+
+//mixins
+@mixin grid($cols, $gutter){
+    float: left;
+    margin: $gutter;
+    width: ((100% - (($cols - 1) * $gutter))/$cols);
+}
+
+//scss
+.grid{
+    @include grid (3, $gutters)
+}
+
