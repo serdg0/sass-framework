@@ -9,57 +9,61 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/9694bc7f86.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Milonga&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/style.css">
     </head>
     <body>
-        <nav>
-            <div>
-                <img src="./assets/Images/nav_logo.svg" alt="logo">
-                <a class="logo-title" href="#">The Odin Project</a>
+        <nav class="navbar-list m-x-7 p-top-2">
+            <div class="flex">
+                <a class="flex text-decoration-none" href="#">
+                    <div>
+                        <img src="./assets/Images/nav_logo.svg" alt="logo">
+                    </div>
+                    <div class="logo-title m-top-2 text-decoration-none milonga">The Odin Project</div>
+                </a>
             </div>
-            <div>
                 <ul>
-                    <li>Curriculum</li>
-                    <li>Community</li>
-                    <li>About</li>
-                    <li>FAQ</li>
-                    <li>|</li>
-                    <li>Sign Up</li>
-                    <li>Log In</li>
+                    <li class="mute-text font-weight-bold">Curriculum</li>
+                    <li class="mute-text font-weight-bold">Community</li>
+                    <li class="mute-text font-weight-bold">About</li>
+                    <li class="mute-text font-weight-bold">FAQ</li>
+                    <li class="mute-text font-weight-bold">|</li>
+                    <li class="mute-text font-weight-bold">Sign Up</li>
+                    <li class="mute-text font-weight-bold">Log In</li>
                 </ul>
-            </div>
         </nav>
-        <div class="text-align">
+        <div class="text-align gradient">
             <header>
-                <h1>Your Career in Web Development Starts Here</h1>
-                <p>Our full stack curriculum is free and supported by a passionate open source community.</p>
-                <a href="#" class="button">View Full Curriculum</a>
+                <h1 class="p-top-7 font-weight-light color-yellow">Your Career in Web Development Starts Here</h1>
+                <p class="p-top-4 m-bottom-7">Our full stack curriculum is free and supported by a passionate open source community.</p>
+                <a href="#" class="button m-bottom-8">View Full Curriculum</a>
             </header>
             <img src="./assets/Images/cover_img.svg" alt="world">
         </div>
-        <section class="text-align margin-top">
-            <div class="center-block margin-bottom">
-                <h2>How it works</h2>
-                <p class="parragraph">This is the website we wish we had when we were learning on our own. We scour the internet looking for only the best resources to supplement your learning and present them in a logical order.</p>
+        <section class="text-align">
+            <div class="center-block m-bottom-10">
+                <h2 class="subtitle p-top-10 p-bottom-7">How it works</h2>
+                <p>This is the website we wish we had when we were learning on our own. We scour the internet looking for only the best resources to supplement your learning and present them in a logical order.</p>
             </div>
-            <div class="row tile-center">
+            <div class="row tile-center m-bottom-6">
                 <div class="col-4">
                     <img src="./assets/Images/learn.svg" alt="learn">
-                    <h4>Learn</h4>
+                    <h4 class="p-top-4 p-bottom-1">Learn</h4>
                     <div>
                         <p>Learn from a curriculum with the best curated online tutorials, blogs, and courses.</p>
                     </div>
                 </div>
                 <div class="col-4">
                     <img src="./assets/Images/build.svg" alt="build">
-                    <h4>Build</h4>
+                    <h4 class="p-top-4 p-bottom-1">Build</h4>
                     <div>
                         <p>Build dozens of portfolio-worthy projects along the way, from simple scripts to full programs and deployed websites.</p>
                     </div>
                 </div>
                 <div class="col-4">
                     <img class="img-fix" src="./assets/Images/connect.svg" alt="connect">
-                    <h4>Connect</h4>
+                    <h4 class="p-top-4 p-bottom-1">Connect</h4>
                     <div>
                         <p>You’re not alone. Learn and get help from our friendly community of beginner and experienced developers.</p>
                     </div>
@@ -67,7 +71,7 @@
             </div>
         </section>
         <section class="badges">
-            <h2 class="text-align">Learn everything you need to know to become a web developer</h2>
+            <h2 class="text-align subtitle p-top-5 m-bottom-6">Learn everything you need to know to become a web developer</h2>
             <div class="row text-align">
                 <div class="col-4">
                     <img src="./assets/Images/html-badge.svg" alt="html">
@@ -96,16 +100,105 @@
                     <h3>RUBY ON RAILS</h3>
                 </div>
             </div>
-            <div class="row text-align last-row">
+            <div class="row text-align center-flex">
                 <div class="col-4">
                     <img src="./assets/Images/hired-b.svg" alt="GH">
                     <h3>GETTING HIRED</h3>
                 </div>
             </div>
-            <div class="signin">
+            <div class="signin center-flex">
                 <a href="#" class="button">Get Started</a>
             </div>
         </section>
+        <section class="gradient">
+            <h2 class="center-flex subtitle p-top-5">Success Stories</h2>
+            <div class="row">
+                <article class="col-6 flex">
+                    <div class="student">
+                        <img class="round-thumbnail" src="./assets/Images/rob.jpg" alt="rob">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <p class="color-yellow">Rob Pando</p>
+                        </div>
+                        <p>TOP was a perfect match for my learning style. Not walking me through an entire project but actually
+                            forcing me to figure it out on my own, by pointing me...</p>
+                    </div>
+                </article>
+                <article class="col-6 flex">
+                    <div class="student">
+                        <img class="round-thumbnail" src="./assets/Images/olivia.jpg" alt="rob">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <p class="color-yellow">Olivia</p>
+                        </div>
+                        <p>Before I found TOP, I was jumping from Coursera course to Coursera course without really any guidance or community. I wanted to get a real development job and not operating...</p>
+                    </div>
+                </article>
+            </div>
+            <div class="row">
+                <article class="col-6 flex">
+                    <div class="student">
+                        <img class="round-thumbnail" src="./assets/Images/cody.jpg" alt="rob">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <p class="color-yellow">Cody Loyd</p>
+                        </div>
+                        <p>Before I started the Odin Project I had literally ZERO programming experience. After almost exactly a year of working through the program, I was offered a job as a front...</p>
+                    </div>
+                </article>
+                <article class="col-6 flex">
+                    <div class="student">
+                        <img class="round-thumbnail" src="./assets/Images/kennedy.jpg" alt="rob">
+                    </div>
+                    <div class="description">
+                        <div>
+                            <p class="color-yellow">William Kennedy</p>
+                        </div>
+                        <p>The Odin Project changed my life and that is not an understatement. In November 2013, I made a commitment to myself to become a self-taught developer so I threw myself...</p>
+                    </div>
+                </article>
+            </div>
+            <div class="center-flex">
+                <a class="mute-text" href="#">Read more success stories</a>
+            </div>
+            <div class="center-flex">
+                <p class="mute-title">Start learning for free now!</p>
+            </div>
+            <div class="center-flex">
+                <a href="" class="button m-bottom-10">Sign Up</a>
+            </div>
+        </section>
+        <footer class="flex">
+            <div class="center-flex">
+                <a class="flex text-decoration-none" href="#">
+                    <div>
+                        <img src="./assets/Images/nav_logo.svg" alt="logo">
+                    </div>
+                    <div class="logo-title m-top-2 text-decoration milonga">The Odin Project</div>
+                </a>
+            </div>
+            <div class="center-flex">
+                <a class="color-yellow" href="#"><i class="fab fa-github"></i></a>
+                <a class="color-yellow" href="#"><i class="fab fa-discord"></i></a>
+                <a class="color-yellow" href="#"><i class="fab fa-facebook-square"></i></a>
+                <a class="color-yellow" href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="center-flex">
+                <div class="column-flex footer-column">
+                    <a class="mute-text flex-basis text-decoration-none" href="#">About</a>
+                    <a class="mute-text flex-basis text-decoration-none" href="#">FAQ</a>
+                    <a class="mute-text flex-basis text-decoration-none" href="#">Blog</a>
+                </div>
+                <div class="column-flex footer-column">
+                    <a class="mute-text flex-basis text-decoration-none" href="#">Success Stories</a>
+                    <a class="mute-text flex-basis text-decoration-none" href="#">Contribute</a>
+                    <a class="mute-text flex-basis text-decoration-none" href="#">Terms of Use</a>
+                </div>
+            </div>
+        </footer>
         <script src="" async defer></script>
     </body>
 </html>

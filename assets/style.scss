@@ -1,7 +1,7 @@
-// variables
+// VARIABLES
+
 $blue: #6abfc3;
 $block-margin: 0% + (100 * (329.5/1259));
-$grid-spacing:3%;
 $tile-center: 0% + (100 * (89.5/1259));
 $img-cv: 0% + (100*(160/254));
 $cv-center: 0% + (100*(200/1259));
@@ -9,17 +9,175 @@ $space-between-sections: 100px;
 $grey-background: #f3f3f3;
 $yellow: #cc9543;
 $h: 6;
-//----- Extends
-*{
-	font-family: Arial, Helvetica, sans-serif;
+//-------------------------
+
+
+//------------RESET TO DEFAULT VALUES
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
 }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*{
+	font-family: Arial, Helvetica, sans-serif !important;
+}
+//----------------------------
+
+
+//------------------ THE GRID
+$columns: 12;
+$grid-gutter: 30px !default;
+$grid-spacing: 3%;
+
+%clearfix:after {
+	display:block;
+	clear:both;
+	content:'';
+}
+
+.row {
+	@extend %clearfix;
+
+	& + & {
+		margin-top:$grid-spacing;
+	}
+}
+
+@for $j from 1 to $columns {
+	.col-#{$j}{
+		width: (100% / (12/$j)) - ($grid-spacing * (12-$j) / 12);
+		float:left;
+		padding: $grid-gutter;
+		margin-right:$grid-spacing;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+
+	&:last-child {
+		margin-right:0%;
+		}
+	}
+}
+//-------------------------------
+
+
+//-------------- MOBILE QUERIE
+
+$phone: 640px;
+
+@media (max-width: #{$phone}){
+	[class^="col-"]	{
+		float: none !important;
+		width: auto;
+		margin-top: 3%;
+	}
+}
+//--------------------------------
+
+
+//--------------SPACING & SIZING (padding & margin) from 1 - 10, 0em - 5em.
+
+ @for $k from 0 to 11 {
+	 //PADDING
+	.p-#{$k}{
+		padding: 0.5em * $k !important;
+	}
+	.p-x-#{$k}{
+		padding-left: 0.5em * $k !important;
+		padding-right: 0.5em * $k !important;
+	}
+	.p-y-#{$k}{
+		padding-top: 0.5em * $k !important;
+		padding-bottom: 0.5em * $k !important;
+	}
+	.p-top-#{$k}{
+		padding-top: 0.5em * $k !important;
+	}
+	.p-bottom-#{$k}{
+		padding-bottom: 0.5em * $k !important;
+	}
+	.p-right-#{$k}{
+		padding-right: 0.5em * $k !important;
+	}
+	.p-left-#{$k}{
+		padding-left: 0.5em * $k !important;
+	}
+	//MARGIN
+	.m-#{$k}{
+		margin: 0.5em * $k !important;
+	}
+	.m-x-#{$k}{
+		margin-left: 0.5em * $k !important;
+		margin-right: 0.5em * $k !important;
+	}
+	.m-y-#{$k}{
+		margin-top: 0.5em * $k !important;
+		margin-bottom: 0.5em * $k !important;
+	}
+	.m-top-#{$k}{
+		margin-top: 0.5em * $k !important;
+	}
+	.m-bottom-#{$k}{
+		margin-bottom: 0.5em * $k !important;
+	}
+	.m-right-#{$k}{
+		margin-right: 0.5em * $k !important;
+	}
+	.m-left-#{$k}{
+		margin-left: 0.5em * $k !important;
+	}
+ }
+
+//---------------------------------
+
+
+//----------------------HEADINGS
+
 @for $i from 1 through $h{
 	@if $i == 1{
 		h#{$i}{
 		font-size: 2.25rem;
     	font-weight: 100;
 		letter-spacing: 0.4px;
-		color: #cc9543;
 		}
 	}
 	@else {
@@ -28,12 +186,11 @@ $h: 6;
 		}
 	}
 }
+//--------------------------------
+
+
 .badges{
 	background: $grey-background;
-	h2{
-		padding-top: 60px;
-		margin-bottom: 60px;
-	}
 	.row{
 		margin-right: $cv-center;
 		margin-left: $cv-center;
@@ -48,19 +205,49 @@ $h: 6;
 			}
 		}
 	}
-	.last-row{
-		display: flex;
-		justify-content: center;
-	}
 	.signin{
-		display: flex;
-		justify-content: center;
 		a{
 			margin-top: 40px;
 			margin-bottom: 60px;
 			background: $yellow !important;
 		}
 	}
+}
+.gradient{
+	.student{
+		padding-top: 16px;
+	}
+	.description{
+		margin-left: 16px;
+	}
+}
+.milonga{
+	font-family: 'Milonga', cursive !important;
+}
+footer{
+	justify-content: space-around;
+	min-height: 277px;
+}
+.flex{
+	display: flex;
+}
+.font-weight-bold{
+	font-weight: bold !important;
+}
+.font-weight-light{
+	font-weight: lighter;
+}
+.center-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.column-flex{
+	display: flex;
+	flex-direction: column;
+}
+.color-yellow{
+	color: $yellow;
 }
 
 .button {
@@ -91,16 +278,38 @@ $h: 6;
 	margin-right: $tile-center;
 	margin-left: $tile-center;
 }
-.margin-bottom{
-	margin-bottom: $space-between-sections;
+.footer-column{
+	width: 130px;
+	height: 90px;
 }
-.margin-top{
-	margin-top: $space-between-sections;
+.flex-basis{
+	flex-basis: 30px;
 }
 p {
 	color: rgba(74,74,74,0.7);
 	font-size: 1.125rem;
-    letter-spacing: 0.2px;
+	letter-spacing: 0.2px;
+	line-height: 1.88;
+	font-weight: 100;
+}
+.subtitle{
+	font-size: 1.5rem;
+	letter-spacing: 0.3px;
+	line-height: 1.2;
+}
+.mute-title{
+	font-size: 2.2em;
+    line-height: 1.5em;
+    margin: 0 auto 1rem;
+	max-width: 25em;
+	padding-top: 80px;
+	margin-bottom: 40px;
+}
+.mute-text{
+	color: rgba(74,74,74,0.7);
+}
+.gradient{
+	background-image: linear-gradient(to bottom, #fff, #eee);
 }
 .logo-title {
     flex: 1;
@@ -112,63 +321,30 @@ p {
     display: inline-block;
 	padding-left: 0.5em;
 }
-nav{
-	//nav
+.logo-name{
+	margin-top: 1em;
+	text-decoration: none;
+}
+.text-decoration-none{
+	text-decoration: none;
+}
+.round-thumbnail{
+	width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.navbar-list{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 	ul{
 		list-style-type: none;
 		display: flex;
-		flex-direction: row;
-	}
-}
-//----- Grid
-%clearfix:after {
-	display:block;
-	clear:both;
-	content:'';
-}
-
-.row {
-	@extend %clearfix;
-
-	& + & {
-		margin-top:$grid-spacing;
-	}
-}
-
-[class^="col-"] {
-	float:left;
-	margin-right:$grid-spacing;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	box-sizing:border-box;
-
-	&:last-child {
-		margin-right:0%;
-	}
-}
-
-//----- Columns
-.col-1 { width:(100% / 12) - ($grid-spacing * 11 / 12); }
-.col-2 { width:(100% / 6) - ($grid-spacing * 10 / 12); }
-.col-3 { width:(100% / 4) - ($grid-spacing * 9 / 12); }
-.col-4 { width:(100% / 3) - ($grid-spacing * 8 / 12); }
-.col-5 { width:(100% / 2.4) - ($grid-spacing * 7 / 12); }
-.col-6 { width:(100% / 2) - ($grid-spacing * 6 / 12); }
-.col-7 { width:(100% / 1.714285714285714) - ($grid-spacing * 5 / 12); }
-.col-8 { width:(100% / 1.5) - ($grid-spacing * 4 / 12); }
-.col-9 { width:(100% / 1.333333333333333) - ($grid-spacing * 3 / 12); }
-.col-10 { width:(100% / 1.2) - ($grid-spacing * 2 / 12); }
-.col-11 { width:(100% / 1.090909090909091) - ($grid-spacing * 1 / 12); }
-.col-12 { width:100%; }
-
-//queries
-
-$phone: 640px;
-
-@media (max-width: #{$phone}){
-	[class^="col-"]{
-		float: none !important;
-		width: auto;
+		justify-content: space-evenly;
+		flex-flow: nowrap;
+		li{
+			margin-right: 8%;
+		}
 	}
 }
 
