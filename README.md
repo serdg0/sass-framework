@@ -5,7 +5,7 @@ In this project i used SASS to create some framework-like classes, while i was b
 
 ## My framework description
 
-##Sizing and spacing
+## Sizing and spacing
 
 Also did a sizing system with margins and paddings, with values from 1 to 10, that goes up 0.5 rem each value, and holds rem sizes of 0 to 5.
 
@@ -29,7 +29,7 @@ m-2 => all margins set to 1rem.
 
 As most webpages changes their display on mobile devices, to only one element per view, i added a mobile-block class, which in narrower screens it will automatically stack each element.
 
-###Flex
+### Flex
 
 The center-flex class automatically center an item to it's respective parent.
 
