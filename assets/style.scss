@@ -346,6 +346,15 @@ $columns: 13;
 		margin-left: 16px;
 	}
 }
+.fixed-position{
+	position: fixed;
+}
+.absolute-position{
+	position: absolute;
+}
+.relative-position{
+	position: relative;
+}
 .milonga{
 	font-family: 'Milonga', cursive !important;
 }
@@ -359,6 +368,8 @@ footer{
 .center-flex{
 	display: flex;
 	justify-content: center;
+}
+.items-center{
 	align-items: center;
 }
 .column-flex{

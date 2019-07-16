@@ -25,13 +25,25 @@ p-bottom-5 => bottom padding set to 2.5rem.
 
 m-2 => all margins set to 1rem.
 
+### Positions
+
+For changing the position value of an element, i made the super complex classes of:
+
+* relative-position
+* fixed-position
+* absolute-position
+
+I leave to your imagination what each one of those do.
+
 ### Mobile block feature
 
 As most webpages changes their display on mobile devices, to only one element per view, i added a mobile-block class, which in narrower screens it will automatically stack each element.
 
 ### Flex
 
-The center-flex class automatically center an item to it's respective parent.
+The center-flex class automatically center horizontally an item to it's respective parent.
+
+For a vertical center, use the class items-center.
 
 The column-flex class set the element to the surprisingly columns direction.
 
