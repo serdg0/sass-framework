@@ -130,4 +130,4 @@ This have been done by:
 * [Sergio Diaz](https://github.com/serdg0) 
 
 ## The website
-[Click](#) to view website
+[Click](https://rawcdn.githack.com/serdg0/sass-framework/5653b0ef649a6bb104f75e0d3301803e9122d612/index.html) to view website
