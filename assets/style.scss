@@ -1,0 +1,481 @@
+// VARIABLES
+
+$blue: #6abfc3;
+$block-margin: 0% + (100 * (329.5/1259));
+$tile-center: 0% + (100 * (89.5/1259));
+$img-cv: 0% + (100*(160/254));
+$cv-center: 0% + (100*(200/1259));
+$space-between-sections: 100px;
+$grey-background: #f3f3f3;
+$gold: #cc9543;
+$h: 6;
+//-------------------------
+
+
+//------------RESET TO DEFAULT VALUES
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*{
+	font-family: Arial, Helvetica, sans-serif !important;
+}
+//----------------------------
+
+//--------------------------COLORS (background & text)
+
+$colors: (red, blue, yellow,green, black, pink, purple, orange, brown, white, silver, grey);
+
+@each $color in $colors {
+	.#{$color}-text{
+		color: $color !important;
+	}
+	.#{$color}-bg{
+		background-color: $color !important;
+	}
+}
+//-------------------------------
+
+//------------------------------BORDERS
+$borders: [top, right, bottom, left, all];
+@each $border in $borders {
+	@for $c from 0 to 21{
+		@if $border == all{
+			.border-#{$border}-#{$c}{
+				border: $c*0.1rem;
+			}
+		}
+		@else{
+			.border-#{$border}-#{$c} {
+				border-#{$border}: $c*0.1rem;
+			}
+		}
+	}
+}
+$corners: (top, bottom);
+$sides: (left, right);
+@each $corner in $corners{
+		.rounded-#{$corner}{
+			@each $side in $sides{
+			border-#{$corner}-#{$side}-radius: 10px;
+			}
+		}
+	}
+@each $side in $sides {
+	.rounded-#{$side}{
+		@each $corner in $corners{
+		border-#{$corner}-#{$side}-radius: 10px;
+		}
+	}
+}
+.rounded {
+	border-radius: 10px;
+}
+.rounded-0{
+	border-radius: 0 !important;
+}
+.box-circular{
+	border-radius: 50%;
+}
+
+//-------------------------------------
+
+//--------------------------------TEXT
+$aligns: (right, left, center);
+@each $align in $aligns {
+	.text-horizontal-#{$align}{
+		text-align: $align !important;
+	}
+}
+@for $f from 1 to 21 {
+	.font-size-#{$f}{
+		font-size: $f*0.25rem !important;
+	}
+}
+.font-weight-bold{
+	font-weight:700 !important;
+}
+.font-weight-bolder {
+	font-weight: 900 !important;
+}
+.font-weight-light{
+	font-weight: 100 !important;
+}
+.font-weight-normal{
+	font-weight: 400 !important;
+}
+
+//----------------------------------
+
+//------------------ THE GRID
+
+$grid-gutter: 30px !default;
+$grid-spacing: 3%;
+
+%clearfix:after {
+	display:block;
+	clear:both;
+	content:'';
+}
+
+.row {
+	@extend %clearfix;
+
+	& + & {
+		margin-top:$grid-spacing;
+	}
+}
+
+$breakpoints: (sm, md, lg);
+$columns: 13;
+@mixin column-build($j){
+		width: (100% / (12/$j)) - ($grid-spacing * (12-$j) / 12);
+		float:left;
+		padding: $grid-gutter;
+		margin-right:$grid-spacing;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+}
+@mixin columns($point) {
+	@for $j from 1 to $columns {
+		.col-#{$point}-#{$j}{
+			@include column-build($j);
+ 
+		&:last-child {
+			margin-right:0%;
+			}
+		}
+	}
+}
+@mixin nodisplay($point){
+	.col-#{$point}-none{
+		display: none !important;
+	}
+}
+@mixin mobile-block{
+	.row{
+		& + & {
+			margin-top:0;
+		}
+	}
+	.mobile-block{
+	float: none !important;
+	width: 100% !important;
+	margin-top: 3%;
+	}
+}
+@each $point in $breakpoints{
+	@if $point == sm{
+		@media (max-width: 720px){
+			@include mobile-block;
+			@include nodisplay($point);
+			@include columns($point);
+		}
+	}
+	@else if $point == md{
+		@media (min-width: 721px){
+			@include nodisplay($point);
+			@include columns($point);
+		}
+	}
+	@else {
+		@media (min-width: 1024px){
+			@include nodisplay($point);
+			@include columns($point);
+		}
+	}
+}
+
+@for $j from 1 to $columns {
+	.col-#{$j}{
+		@include column-build($j);
+
+	&:last-child {
+		margin-right:0%;
+		}
+	}
+}
+//-------------------------------
+
+
+//--------------SPACING & SIZING (padding & margin) from 1 - 10, 0em - 5em.
+
+ @for $k from 0 to 11 {
+	 //PADDING
+	.p-#{$k}{
+		padding: 0.5rem * $k !important;
+	}
+	.p-x-#{$k}{
+		padding-left: 0.5rem * $k !important;
+		padding-right: 0.5rem * $k !important;
+	}
+	.p-y-#{$k}{
+		padding-top: 0.5rem * $k !important;
+		padding-bottom: 0.5rem * $k !important;
+	}
+	.p-top-#{$k}{
+		padding-top: 0.5rem * $k !important;
+	}
+	.p-bottom-#{$k}{
+		padding-bottom: 0.5rem * $k !important;
+	}
+	.p-right-#{$k}{
+		padding-right: 0.5rem * $k !important;
+	}
+	.p-left-#{$k}{
+		padding-left: 0.5rem * $k !important;
+	}
+	//MARGIN
+	.m-#{$k}{
+		margin: 0.5rem * $k !important;
+	}
+	.m-x-#{$k}{
+		margin-left: 0.5rem * $k !important;
+		margin-right: 0.5rem * $k !important;
+	}
+	.m-y-#{$k}{
+		margin-top: 0.5rem * $k !important;
+		margin-bottom: 0.5rem * $k !important;
+	}
+	.m-top-#{$k}{
+		margin-top: 0.5rem * $k !important;
+	}
+	.m-bottom-#{$k}{
+		margin-bottom: 0.5rem * $k !important;
+	}
+	.m-right-#{$k}{
+		margin-right: 0.5rem * $k !important;
+	}
+	.m-left-#{$k}{
+		margin-left: 0.5rem * $k !important;
+	}
+ }
+
+//---------------------------------
+
+
+//----------------------HEADINGS
+
+@for $i from 1 through $h{
+	@if $i == 1{
+		h#{$i}{
+		font-size: 2.25rem;
+    	font-weight: 100;
+		letter-spacing: 0.4px;
+		}
+	}
+	@else {
+		h#{$i}{
+		color: #4a4a4a;
+		}
+	}
+}
+//--------------------------------
+
+
+.badges{
+	background: $grey-background;
+	.row{
+		margin-right: $cv-center;
+		margin-left: $cv-center;
+		.col-4{
+			background: #fff;
+			padding: 23px 46px 25px 46px;
+			box-shadow: 0 7px 16px 0 rgba(0,0,0,0.05);
+			height: 256px; 
+			img{
+				width: $img-cv;
+				height: $img-cv;
+			}
+		}
+	}
+	.signin{
+		a{
+			margin-top: 40px;
+			margin-bottom: 60px;
+			background: $gold !important;
+		}
+	}
+}
+.gradient{
+	.student{
+		padding-top: 16px;
+	}
+	.description{
+		margin-left: 16px;
+	}
+}
+.fixed-position{
+	position: fixed;
+}
+.absolute-position{
+	position: absolute;
+}
+.relative-position{
+	position: relative;
+}
+.milonga{
+	font-family: 'Milonga', cursive !important;
+}
+footer{
+	justify-content: space-around;
+	min-height: 277px;
+}
+.flex{
+	display: flex;
+}
+.center-flex{
+	display: flex;
+	justify-content: center;
+}
+.items-center{
+	align-items: center;
+}
+.column-flex{
+	display: flex;
+	flex-direction: column;
+}
+.color-gold{
+	color: $gold;
+}
+
+.button {
+    border-radius: 0.2em;
+    box-shadow: 0 0.05em 0.25em 0 rgba(0,0,0,0.5);
+    color: #fff;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    padding: 1rem 3.5rem;
+    text-align: center;
+    text-decoration: none;
+	border: none;
+	background: $blue;
+}
+.img-fix{
+	height: 155px;
+}
+.text-align{
+	text-align: center;
+}
+.center-block{
+	margin-right: $block-margin;
+	margin-left: $block-margin;
+}
+.tile-center{
+	margin-right: $tile-center;
+	margin-left: $tile-center;
+}
+.footer-column{
+	width: 130px;
+	height: 90px;
+}
+.flex-basis{
+	flex-basis: 30px;
+}
+p {
+	color: rgba(74,74,74,0.7);
+	font-size: 1.125rem;
+	letter-spacing: 0.2px;
+	line-height: 1.88;
+	font-weight: 100;
+}
+.subtitle{
+	font-size: 1.5rem;
+	letter-spacing: 0.3px;
+	line-height: 1.2;
+}
+.mute-title{
+	font-size: 2.2em;
+    line-height: 1.5em;
+    margin: 0 auto 1rem;
+	max-width: 25em;
+	padding-top: 80px;
+	margin-bottom: 40px;
+}
+.mute-text{
+	color: rgba(74,74,74,0.7);
+}
+.gradient{
+	background-image: linear-gradient(to bottom, #fff, #eee);
+}
+.logo-title {
+    flex: 1;
+    color: $gold;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+    font-size: 1.6em;
+    display: inline-block;
+	padding-left: 0.5em;
+}
+.logo-name{
+	margin-top: 1em;
+	text-decoration: none;
+}
+.text-decoration-none{
+	text-decoration: none;
+}
+.round-thumbnail{
+	width: 50px;
+    height: 50px; 
+    border-radius: 50%;
+}
+.navbar-list{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	ul{
+		list-style-type: none;
+		display: flex;
+		justify-content: space-evenly;
+		flex-flow: nowrap;
+		li{
+			margin-right: 8%;
+		}
+	}
+}
+
+
